@@ -24,7 +24,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME}}
           password: ${{ secrets.DOCKERHUB_TOKEN}}
-      run:
-        docker build -t $REPO .
-        docker tag $REPO:latest $NAME/$REPO:latest
-        docker push
+      - name: Docker Build and push
+        run:
+          docker build -t $REPO .
+          docker tag $REPO:latest $NAME/$REPO:latest
+          docker push
