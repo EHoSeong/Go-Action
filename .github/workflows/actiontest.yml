@@ -24,6 +24,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN}}
       - name: Docker Build and push
         run:
-          docker build -t $REPO .
+          docker buildx build -t $REPO .
           docker tag $REPO:latest $NAME/$REPO:latest
           docker push
